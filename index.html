@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Core AI - Demon OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ['"JetBrains Mono"', 'monospace'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              cyan: {
+                400: '#22d3ee',
+                500: '#06b6d4',
+                900: '#164e63',
+              },
+              slate: {
+                850: '#151f32',
+                900: '#0f172a',
+                950: '#020617',
+              }
+            },
+            animation: {
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'glitch': 'glitch 0.3s linear infinite',
+              'glitch-subtle': 'glitch-subtle 3s infinite',
+              'spin-slow': 'spin 8s linear infinite',
+              'radar-sweep': 'radar-sweep 4s linear infinite',
+              'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+              'float': 'float 10s ease-in-out infinite',
+              'scan': 'scan 8s linear infinite',
+            },
+            keyframes: {
+              glitch: {
+                '0%, 100%': { transform: 'translate(0)' },
+                '20%': { transform: 'translate(-3px, 2px)' },
+                '40%': { transform: 'translate(-3px, -2px)' },
+                '60%': { transform: 'translate(3px, 2px)' },
+                '80%': { transform: 'translate(3px, -2px)' },
+              },
+              'glitch-subtle': {
+                '0%, 90%, 100%': { transform: 'translate(0)', opacity: '1' },
+                '92%': { transform: 'translate(-2px, 1px)', opacity: '0.8' },
+                '94%': { transform: 'translate(2px, -1px)', opacity: '0.9' },
+                '96%': { transform: 'translate(-1px, -2px)', opacity: '0.8' },
+              },
+              'radar-sweep': {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0) scale(1)' },
+                '50%': { transform: 'translateY(-30px) scale(1.02)' },
+              },
+              scan: {
+                '0%': { bottom: '100%' },
+                '100%': { bottom: '-100px' }
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #020617;
+        color: #e2e8f0;
+        overflow: hidden; 
+        transition: background-color 1s ease-in-out;
+        height: 100vh;
+        width: 100vw;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      
+      .demon-vignette {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.9) 100%),
+                    radial-gradient(circle at center, transparent 50%, rgba(220, 38, 38, 0.05) 100%);
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      .noise-overlay {
+        position: fixed;
+        inset: 0;
+        background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 6;
+      }
+      
+      .scanline {
+        width: 100%;
+        height: 4px;
+        z-index: 100;
+        background: rgba(220, 38, 38, 0.1);
+        opacity: 0.2;
+        position: absolute;
+        bottom: 100%;
+        animation: scan 4s linear infinite;
+        pointer-events: none;
+      }
+      
+      .demon-gradient-bg {
+        background: radial-gradient(circle at 50% 50%, rgba(153, 27, 27, 0.2) 0%, rgba(5, 0, 0, 1) 100%);
+      }
+
+      /* CRT lines effect */
+      .crt-overlay {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+        z-index: 7;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

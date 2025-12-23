@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Copy of Nexus Core - System Control AI",
+  "description": "A futuristic, voice-activated system control dashboard powered by Gemini Live API. It simulates OS-level management with real-time audio interaction and dynamic visualization.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
